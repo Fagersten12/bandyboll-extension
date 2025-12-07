@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Bandyboll",
+  "description": "Förstorar en bandyboll i videoström i Chrome.",
+  "version": "0.1.0",
+  "permissions": ["activeTab", "scripting"],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "action": {
+    "default_title": "Bandyboll"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.youtube.com/*",
+        "https://*.vimeo.com/*"
+      ],
+      "js": ["src/content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
